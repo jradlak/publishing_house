@@ -22,6 +22,13 @@ angular.module('publishing_house')
     ['$rootScope', '$scope', '$location', '$window', 'Auth', function($rootScope, $scope, $location, $window, Auth) {
 
         $scope.rememberme = true;
+
+        //TODO code below is for test purposes only:
+        $scope.article = {
+            title: "Very good article 1",
+            description: "This article is really good"
+        };
+
         /*
         $scope.login = function() {
             Auth.login({
