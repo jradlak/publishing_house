@@ -19,59 +19,6 @@ var routes = [
         }]
     },
 
-    // OAUTH
-    {
-        path: '/auth/twitter',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('twitter')]
-    },
-    {
-        path: '/auth/twitter/callback',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('twitter', {
-            successRedirect: '/',
-            failureRedirect: '/login'
-        })]
-    },
-    {
-        path: '/auth/facebook',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('facebook')]
-    },
-    {
-        path: '/auth/facebook/callback',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('facebook', {
-            successRedirect: '/',
-            failureRedirect: '/login'
-        })]
-    },
-    {
-        path: '/auth/google',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('google')]
-    },
-    {
-        path: '/auth/google/return',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('google', {
-            successRedirect: '/',
-            failureRedirect: '/login'
-        })]
-    },
-    {
-        path: '/auth/linkedin',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('linkedin')]
-    },
-    {
-        path: '/auth/linkedin/callback',
-        httpMethod: 'GET',
-        middleware: [passport.authenticate('linkedin', {
-            successRedirect: '/',
-            failureRedirect: '/login'
-        })]
-    },
 
     // Local Auth
     {
