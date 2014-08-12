@@ -19,7 +19,6 @@ var routes = [
         }]
     },
 
-
     // Local Auth
     {
         path: '/register',

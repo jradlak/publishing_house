@@ -1,5 +1,5 @@
 doctype html
-html(lang='en', data-ng-app='angular-client-side-auth')
+html(lang='en', data-ng-app='publishing_house')
     head
         meta(charset='utf-8')
         title Angular Auth Example
@@ -19,11 +19,15 @@ html(lang='en', data-ng-app='angular-client-side-auth')
                 .container-fluid
                     ul.nav.nav-tabs
                         li(data-access-level='accessLevels.anon', active-nav)
+                            a(href='/guest') Start
+                        li(data-access-level='accessLevels.user', active-nav)
+                            a(href='/') Start
+                        li(data-access-level='accessLevels.anon', active-nav)
                             a(href='/login') Log in
                         li(data-access-level='accessLevels.anon', active-nav)
                             a(href='/register') Register
                         li(data-access-level='accessLevels.user', active-nav)
-                            a(href='/') Home
+                            a(href='/home') Home
                         li(data-access-level='accessLevels.user', active-nav='nestedTop')
                             a(href='/private') Private
                         li(data-access-level='accessLevels.admin', active-nav)
@@ -59,6 +63,8 @@ html(lang='en', data-ng-app='angular-client-side-auth')
             include partials/admin
         script(type="text/ng-template", id="home")
             include partials/home
+        script(type="text/ng-template", id="start")
+            include partials/start
         script(type="text/ng-template", id="login")
             include partials/login
         script(type="text/ng-template", id="private/layout")

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angular-client-side-auth', ['ngCookies', 'ui.router'])
+angular.module('publishing_house', ['ngCookies', 'ui.router'])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
@@ -29,6 +29,11 @@ angular.module('angular-client-side-auth', ['ngCookies', 'ui.router'])
                 access: access.anon
             }
         })
+        .state('anon.start', {
+            url: '/guest',
+            templateUrl: 'start',
+            controller: 'MainCtrl'
+        })
         .state('anon.login', {
             url: '/login/',
             templateUrl: 'login',
@@ -49,8 +54,13 @@ angular.module('angular-client-side-auth', ['ngCookies', 'ui.router'])
                 access: access.user
             }
         })
-        .state('user.home', {
+        .state('user.start', {
             url: '/',
+            templateUrl: 'start',
+            controller: 'MainCtrl'
+        })
+        .state('user.home', {
+            url: '/home/',
             templateUrl: 'home'
         })
         .state('user.private', {
