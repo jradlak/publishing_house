@@ -1,5 +1,7 @@
 var express =           require('express')
     , http =            require('http')
+    , https =           require('https')
+    , fs =              require('fs')
     , passport =        require('passport')
     , path =            require('path')
     , morgan =          require('morgan')
@@ -62,7 +64,16 @@ passport.deserializeUser(User.deserializeUser);
 
 require('./server/routes.js')(app);
 
-app.set('port', process.env.PORT || 8000);
-http.createServer(app).listen(app.get('port'), function(){
+//app.set('port', process.env.PORT || 8000);
+//http.createServer(app).listen(app.get('port'), function(){
+//    console.log("Express server listening on port " + app.get('port'));
+//});
+
+var privateKey  = fs.readFileSync('crt/publishing.key', 'utf8');
+var certificate = fs.readFileSync('crt/publishing.crt', 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
+app.set('port', process.env.PORT || 8443);
+https.createServer(credentials, app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
