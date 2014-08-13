@@ -2,10 +2,6 @@ var User
     , _ =               require('underscore')
     , passport =        require('passport')
     , LocalStrategy =   require('passport-local').Strategy
-    , TwitterStrategy = require('passport-twitter').Strategy
-    , FacebookStrategy = require('passport-facebook').Strategy
-    , GoogleStrategy = require('passport-google').Strategy
-    , LinkedInStrategy = require('passport-linkedin').Strategy
     , check =           require('validator').check
     , userRoles =       require('../../client/js/routingConfig').userRoles;
 
@@ -54,21 +50,6 @@ module.exports = {
         callback(null, user);
     },
 
-    findOrCreateOauthUser: function(provider, providerId) {
-        var user = module.exports.findByProviderId(provider, providerId);
-        if(!user) {
-            user = {
-                id: _.max(users, function(user) { return user.id; }).id + 1,
-                username: provider + '_user', // Should keep Oauth users anonymous on demo site
-                role: userRoles.user,
-                provider: provider
-            };
-            user[provider] = providerId;
-            users.push(user);
-        }
-
-        return user;
-    },
 
     findAll: function() {
         return _.map(users, function(user) { return _.clone(user); });
@@ -82,10 +63,6 @@ module.exports = {
         console.log("Znajdowanie po userName!!!");
         console.log(username);
         return _.clone(_.find(users, function(user) { return user.username === username; }));
-    },
-
-    findByProviderId: function(provider, id) {
-        return _.find(users, function(user) { return user[provider] === id; });
     },
 
     validate: function(user) {
