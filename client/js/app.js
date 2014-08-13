@@ -68,13 +68,13 @@ angular.module('publishing_house', ['ngCookies', 'ui.router'])
             url: '/private/',
             templateUrl: 'private/layout'
         })
-        .state('user.private.home', {
+        .state('user.private.userDetails', {
             url: '',
-            templateUrl: 'private/home'
+            templateUrl: 'private/userDetails'
         })
-        .state('user.private.nested', {
-            url: 'nested/',
-            templateUrl: 'private/nested'
+        .state('user.private.articleList', {
+            url: 'articleList/',
+            templateUrl: 'private/articleList'
         })
         .state('user.private.admin', {
             url: 'admin/',
