@@ -1,2 +1,5 @@
 h1 My account details
-p Here you can edit details about your account
+div(data-ng-controller='UserCtrl')
+    p Here you can edit details about your account -
+    p Username: {{user.username}}
+    p Role: {{user.role.title}}

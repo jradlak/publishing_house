@@ -19,7 +19,7 @@ angular.module('publishing_house')
 
 angular.module('publishing_house')
     .controller('MainCtrl',
-    ['$rootScope', '$scope', '$location', '$window', 'Auth', function($rootScope, $scope, $location, $window, Auth) {
+    ['$rootScope', '$scope', function($rootScope, $scope) {
 
         $scope.rememberme = true;
 
@@ -29,26 +29,20 @@ angular.module('publishing_house')
             description: "This article is really good"
         };
 
-        /*
-        $scope.login = function() {
-            Auth.login({
-                    username: $scope.username,
-                    password: $scope.password,
-                    rememberme: $scope.rememberme
-                },
-                function(res) {
-                    $location.path('/');
-                },
-                function(err) {
-                    $rootScope.error = "Failed to login";
-                });
-        };
-
-        $scope.loginOauth = function(provider) {
-            $window.location.href = '/auth/' + provider;
-        };
-        */
     }]);
+
+angular.module('publishing_house')
+    .controller('UserCtrl',
+    ['$rootScope', '$scope', 'Users', 'Auth', function($rootScope, $scope, Users, Auth) {
+        $scope.rememberme = true;
+        $scope.user = Auth.user;
+
+        $scope.saveUserData = function() {
+            console.log("sejwowanie juzera ;)");
+            console.log($scope.user);
+        }
+    }]);
+
 
 angular.module('publishing_house')
 .controller('LoginCtrl',

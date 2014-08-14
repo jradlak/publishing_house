@@ -8,10 +8,6 @@ module.exports = {
         var users = User.findAll();
         _.each(users, function(user) {
             delete user.password;
-            delete user.twitter;
-            delete user.facebook;
-            delete user.google;
-            delete user.linkedin;
         });
         res.json(users);
     }
