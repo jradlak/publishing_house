@@ -43,6 +43,19 @@ angular.module('publishing_house')
         }
     }]);
 
+angular.module('publishing_house')
+    .controller('ArticleCtrl',
+    ['$rootScope', '$scope', 'Users', 'Auth', function($rootScope, $scope, Users, Auth) {
+        $scope.rememberme = true;
+        $scope.user = Auth.user;
+        $scope.article = {};
+
+        $scope.addArticle = function() {
+            console.log("Add article!!!");
+            console.log($scope.article);
+        }
+    }]);
+
 
 angular.module('publishing_house')
 .controller('LoginCtrl',
