@@ -15,7 +15,7 @@ module.exports = {
             {
                 var art = {
                     id :  docs[a].id,
-                    author_id : docs[a].author_id,
+                    user_name : docs[a].user_name,
                     title : docs[a].title,
                     description : docs[a].description,
                     content : docs[a].content
@@ -26,11 +26,18 @@ module.exports = {
         });
     },
 
-    addArticle : function(db, author_id, title, description, callback) {
+    addArticle : function(db, user_name, title, description, content, callback) {
+        var maxId = 1;
+        if (articles.length > 0) {
+            maxId = _.max(articles, function(article) { return article.id; }).id + 1;
+        }
+
         var article = {
-            id : _.max(articles, function(article) { return article.id; }).id + 1,
-            author_id : author_id,
-            title : title
+            id : maxId,
+            user_name : user_name,
+            title : title,
+            description : description,
+            content : content
         };
 
         articles.push(article);
@@ -39,6 +46,6 @@ module.exports = {
         var collection = db.get('articlecollection');
         collection.insert(article);
 
-        callback(null, article);
+        //callback(null, article);
     }
 };

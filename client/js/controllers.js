@@ -45,14 +45,23 @@ angular.module('publishing_house')
 
 angular.module('publishing_house')
     .controller('ArticleCtrl',
-    ['$rootScope', '$scope', 'Users', 'Auth', function($rootScope, $scope, Users, Auth) {
+    ['$rootScope', '$scope', 'Users', 'Auth', 'Articles', function($rootScope, $scope, Users, Auth, Articles) {
         $scope.rememberme = true;
         $scope.user = Auth.user;
         $scope.article = {};
 
         $scope.addArticle = function() {
-            console.log("Add article!!!");
+            console.log($scope.user);
+            $scope.article.user_name = $scope.user.username;
             console.log($scope.article);
+            Articles.addArticle(
+                $scope.article,
+                function() {
+                    $location.path('/');
+                },
+                function(err) {
+                    $rootScope.error = err;
+                });
         }
     }]);
 
@@ -60,7 +69,6 @@ angular.module('publishing_house')
 angular.module('publishing_house')
 .controller('LoginCtrl',
 ['$rootScope', '$scope', '$location', '$window', 'Auth', function($rootScope, $scope, $location, $window, Auth) {
-
     $scope.rememberme = true;
     $scope.login = function() {
         Auth.login({

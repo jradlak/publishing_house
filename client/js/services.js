@@ -62,3 +62,18 @@ angular.module('publishing_house')
         }
     };
 });
+
+angular.module('publishing_house')
+    .factory('Articles', function($http) {
+        return {
+            getAll: function(success, error) {
+                $http.get('/articles').success(success).error(error);
+            },
+            addArticle: function(article, success, error) {
+                $http.post('/article', article).success(function(){
+
+                    success();
+                }).error(error);
+            }
+        };
+    });

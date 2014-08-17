@@ -11,11 +11,11 @@ div(data-ng-controller='ArticleCtrl')
         .form-group
             label.control-label.col-sm-2(for="description") Description
             .col-sm-10
-                input.form-control(type="description", data-ng-model="article.description", placeholder="Description", name="description", required, data-ng-minlength="5", data-ng-maxlength="60")
+                input.form-control(type="text", data-ng-model="article.description", placeholder="Description", name="description", required, data-ng-minlength="1", data-ng-maxlength="60")
         .form-group
             label.control-label.col-sm-2(for="content") Content
             .col-sm-10
-                input.form-control(type="content", data-ng-model="article.content", placeholder="Content", name="content", required, data-ng-minlength="5", data-ng-maxlength="80")
+                input.form-control(type="text", data-ng-model="article.content", placeholder="Content", name="content", required, data-ng-minlength="1", data-ng-maxlength="80")
 
         .form-group
             .controls
