@@ -1,5 +1,21 @@
 //
    Created by Jakub on 2014-08-12.
 
-h1 Hello!
-p This view is visible to all users and guests
+h1 Article list
+table.table.table-striped(data-ng-hide="loading")
+    thead
+        tr
+            th Username
+            th Title
+            th Description
+            th Content
+    tbody
+        tr(data-ng-repeat="article in articles")
+            td
+                |  {{ article.user_name }}
+            td
+                |  {{ article.title }}
+            td
+                |  {{ article.description }}
+            td
+                |  {{ article.content }}
