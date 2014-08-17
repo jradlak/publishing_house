@@ -66,6 +66,10 @@ angular.module('publishing_house')
 angular.module('publishing_house')
     .factory('Articles', function($http) {
         return {
+            loadAll : function(success, error) {
+                console.log("Ładowanie artukułów!!!! - serwis");
+                $http.get('/articlesLoad').success(success).error(error);
+            },
             getAll: function(success, error) {
                 $http.get('/articles').success(success).error(error);
             },

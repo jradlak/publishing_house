@@ -11,6 +11,7 @@ module.exports = {
         articles = [];
         var collection = db.get('articlecollection');
         collection.find({},{},function(e,docs) {
+
             for (var a in docs)
             {
                 var art = {
@@ -20,10 +21,13 @@ module.exports = {
                     description : docs[a].description,
                     content : docs[a].content
                 };
-
                 articles.push(art);
             }
         });
+    },
+
+    getAllArticles : function() {
+        return _.map(articles, function(article) { return _.clone(article); });
     },
 
     addArticle : function(db, user_name, title, description, content, callback) {

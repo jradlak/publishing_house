@@ -32,7 +32,7 @@ angular.module('publishing_house', ['ngCookies', 'ui.router'])
         .state('anon.start', {
             url: '/guest',
             templateUrl: 'start',
-            controller: 'MainCtrl'
+            controller: 'ArticleCtrl'
         })
         .state('anon.login', {
             url: '/login/',
@@ -57,7 +57,7 @@ angular.module('publishing_house', ['ngCookies', 'ui.router'])
         .state('user.start', {
             url: '/',
             templateUrl: 'start',
-            controller: 'MainCtrl'
+            controller: 'ArticleCtrl'
         })
         .state('user.home', {
             url: '/home/',

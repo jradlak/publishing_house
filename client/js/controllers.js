@@ -49,11 +49,9 @@ angular.module('publishing_house')
         $scope.rememberme = true;
         $scope.user = Auth.user;
         $scope.article = {};
-
+        $scope.articles = [];
         $scope.addArticle = function() {
-            console.log($scope.user);
             $scope.article.user_name = $scope.user.username;
-            console.log($scope.article);
             Articles.addArticle(
                 $scope.article,
                 function() {
@@ -63,6 +61,20 @@ angular.module('publishing_house')
                     $rootScope.error = err;
                 });
         }
+
+        $scope.findAllArticles = function() {
+            Articles.getAll(function(res){
+                $scope.articles = res;
+                console.log($scope.articles);
+            });
+        }
+
+        $scope.loadAllArticles = function() {
+            Articles.loadAll();
+        }
+
+        $scope.loadAllArticles();
+        $scope.findAllArticles();
     }]);
 
 
@@ -123,6 +135,5 @@ angular.module('publishing_house')
         $rootScope.error = "Failed to fetch users.";
         $scope.loading = false;
     });
-
 }]);
 

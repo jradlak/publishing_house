@@ -47,6 +47,16 @@ var routes = [
 
     // Articles
     {
+        path : '/articlesLoad',
+        httpMethod: 'GET',
+        middleware: [ArticleCtrl.loadAll]
+    },
+    {
+        path : '/articles',
+        httpMethod: 'GET',
+        middleware: [ArticleCtrl.findAll]
+    },
+    {
         path : '/article',
         httpMethod: 'POST',
         middleware: [ArticleCtrl.addArticle]
