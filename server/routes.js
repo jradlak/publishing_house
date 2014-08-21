@@ -1,12 +1,13 @@
-var _ =           require('underscore')
-    , path =      require('path')
-    , passport =  require('passport')
-    , AuthCtrl =  require('./controllers/auth')
-    , UserCtrl =  require('./controllers/user')
-    , ArticleCtrl = require('./controllers/article')
-    , User =      require('./models/User.js')
-    , userRoles = require('../client/js/routingConfig').userRoles
-    , accessLevels = require('../client/js/routingConfig').accessLevels;
+var _ =                 require('underscore')
+    , path =            require('path')
+    , passport =        require('passport')
+    , AuthCtrl =        require('./controllers/auth')
+    , UserCtrl =        require('./controllers/user')
+    , ArticleCtrl =     require('./controllers/article')
+    , TranslationCtrl = require('./controllers/translation')
+    , User =            require('./models/User.js')
+    , userRoles =       require('../client/js/routingConfig').userRoles
+    , accessLevels =    require('../client/js/routingConfig').accessLevels;
 
 var routes = [
 
@@ -18,6 +19,13 @@ var routes = [
             var requestedView = path.join('./', req.url);
             res.render(requestedView);
         }]
+    },
+
+    // Translations
+    {
+        path : '/translation',
+        httpMethod: 'GET',
+        middleware: [TranslationCtrl.getTranslation]
     },
 
     // Local Auth

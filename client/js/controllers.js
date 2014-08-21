@@ -19,15 +19,10 @@ angular.module('publishing_house')
 
 angular.module('publishing_house')
     .controller('MainCtrl',
-    ['$rootScope', '$scope', function($rootScope, $scope) {
+    ['$rootScope', '$scope', '$translate', function($rootScope, $scope, $translate) {
 
-        $scope.rememberme = true;
-
-        //TODO code below is for test purposes only:
-        $scope.article = {
-            title: "Very good article 1",
-            description: "This article is really good"
-        };
+        $translate.uses('pl_PL');
+        console.log("WSZYTKO OK translate !!!");
 
     }]);
 

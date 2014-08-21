@@ -1,10 +1,16 @@
 'use strict';
 
-angular.module('publishing_house', ['ngCookies', 'ui.router'])
+angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.translate'])
 
-    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$translateProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $translateProvider) {
 
     var access = routingConfig.accessLevels;
+
+    $translateProvider.useLoader('translationLoader', {});
+    //$translateProvider.uses('pl_PL');
+
+    $translateProvider.preferredLanguage('pl_PL');
 
     // Public routes
     $stateProvider
@@ -152,7 +158,6 @@ angular.module('publishing_house', ['ngCookies', 'ui.router'])
 
 
 .run(['$rootScope', '$state', 'Auth', function ($rootScope, $state, Auth) {
-
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
         if (!Auth.authorize(toState.data.access)) {
             $rootScope.error = "Seems like you tried accessing a route you don't have access to...";
@@ -169,5 +174,6 @@ angular.module('publishing_house', ['ngCookies', 'ui.router'])
             }
         }
     });
-
 }]);
+
+

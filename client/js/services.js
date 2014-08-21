@@ -67,17 +67,31 @@ angular.module('publishing_house')
     .factory('Articles', function($http) {
         return {
             loadAll : function(success, error) {
-                console.log("Ładowanie artukułów!!!! - serwis");
+                console.log("Ładowanie artykułów!!!! - serwis");
                 $http.get('/articlesLoad').success(success).error(error);
             },
             getAll: function(success, error) {
                 $http.get('/articles').success(success).error(error);
             },
             addArticle: function(article, success, error) {
-                $http.post('/article', article).success(function(){
-
+                $http.post('/article', article).success(function() {
                     success();
                 }).error(error);
             }
         };
     });
+
+angular.module('publishing_house')
+    .factory('translationLoader', function ($http, $q) {
+        return function (options) {
+            var deferred = $q.defer();
+            $http.get('/translation', options.key)
+                .success(function (data) {
+                    deferred.resolve(data);
+                }).error(function () {
+                    deferred.reject(options.key);
+                });
+
+            return deferred.promise;
+        };
+})
