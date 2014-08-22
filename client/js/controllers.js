@@ -21,9 +21,14 @@ angular.module('publishing_house')
     .controller('MainCtrl',
     ['$rootScope', '$scope', '$translate', function($rootScope, $scope, $translate) {
 
-        $translate.use('pl_PL');
-
-
+        $scope.changeLanguage = function() {
+            if ($translate.use() == 'en_EN') {
+                $translate.use('pl_PL');
+            }
+            else {
+                $translate.use('en_EN');
+            }
+        }
     }]);
 
 angular.module('publishing_house')

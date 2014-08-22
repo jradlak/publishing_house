@@ -9,12 +9,14 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
 
     $translateProvider.translations('en_EN', {
         TITLE: 'Hello',
+        CHANGE_LANGUAGE: "Zmień język",
         FOO: 'This is a paragraph.',
         BUTTON_LANG_EN: 'english',
         BUTTON_LANG_DE: 'german'
     });
     $translateProvider.translations('pl_PL', {
         TITLE: 'Cześć',
+        CHANGE_LANGUAGE: "Change language",
         FOO: 'to jest paragraf',
         BUTTON_LANG_EN: 'angielski',
         BUTTON_LANG_DE: 'polski'

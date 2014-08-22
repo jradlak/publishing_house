@@ -100,3 +100,14 @@ node_modules
 /client/components/jquery/src
 /client/components/jquery/.bower.json
 /client/components/jquery/bower.json
+/client/components/angular-translate/angular-translate.js
+/client/components/angular-translate/angular-translate.min.js
+/client/components/angular-ui-router/release/angular-ui-router.js
+/client/components/bootstrap/dist/css/bootstrap-theme.css
+/client/components/bootstrap/dist/css/bootstrap-theme.css.map
+/client/components/bootstrap/dist/css/bootstrap.css
+/client/components/bootstrap/dist/css/bootstrap.css.map
+/client/components/bootstrap/dist/js/bootstrap.js
+/client/components/font-awesome/css/font-awesome.css
+/client/components/jquery/dist/jquery.js
+/client/components/jquery/dist/jquery.min.map
