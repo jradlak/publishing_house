@@ -1,21 +1,12 @@
 //
    Created by Jakub on 2014-08-12.
 
-h1 Article list
-table.table.table-striped(data-ng-hide="loading")
-    thead
-        tr
-            th Username
-            th Title
-            th Description
-            th Content
-    tbody
-        tr(data-ng-repeat="article in articles")
-            td
-                |  {{ article.user_name }}
-            td
-                |  {{ article.title }}
-            td
-                |  {{ article.description }}
-            td
-                |  {{ article.content }}
+h1 {{ 'ARTICLE_LIST' | translate }}
+
+div(data-ng-repeat="article in articles")
+    h3 {{ article.title }}
+    p {{ article.user_name }}
+    p {{ article.description }}
+    p {{ article.content }}
+    hr
+

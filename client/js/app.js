@@ -15,6 +15,8 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
         HOME: 'Home page',
         PRIVATE: 'User panel',
         ADMIN: 'Admin panel',
+        ARTICLE_LIST: 'Article list',
+        WELCOME: 'Welcome',
         FOO: 'This is a paragraph.',
         BUTTON_LANG_EN: 'english',
         BUTTON_LANG_DE: 'german'
@@ -27,6 +29,8 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
         HOME: 'Strona początkowa',
         PRIVATE: 'Panel użytkownika',
         ADMIN: 'Panel administracyjny',
+        ARTICLE_LIST: 'Lista artykułów',
+        WELCOME: 'Witaj',
         FOO: 'to jest paragraf',
         BUTTON_LANG_EN: 'angielski',
         BUTTON_LANG_DE: 'polski'
