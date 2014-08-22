@@ -10,6 +10,11 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
     $translateProvider.translations('en_EN', {
         TITLE: 'Hello',
         CHANGE_LANGUAGE: "Zmień język",
+        LOG_IN: "Log in",
+        REGISTER: "Register",
+        HOME: 'Home page',
+        PRIVATE: 'User panel',
+        ADMIN: 'Admin panel',
         FOO: 'This is a paragraph.',
         BUTTON_LANG_EN: 'english',
         BUTTON_LANG_DE: 'german'
@@ -17,6 +22,11 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
     $translateProvider.translations('pl_PL', {
         TITLE: 'Cześć',
         CHANGE_LANGUAGE: "Change language",
+        LOG_IN: "Zaloguj",
+        REGISTER: "Zarejestruj",
+        HOME: 'Strona początkowa',
+        PRIVATE: 'Panel użytkownika',
+        ADMIN: 'Panel administracyjny',
         FOO: 'to jest paragraf',
         BUTTON_LANG_EN: 'angielski',
         BUTTON_LANG_DE: 'polski'
