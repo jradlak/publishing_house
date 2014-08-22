@@ -7,10 +7,21 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
 
     var access = routingConfig.accessLevels;
 
-    $translateProvider.useLoader('translationLoader', {});
-    //$translateProvider.uses('pl_PL');
+    $translateProvider.translations('en_EN', {
+        TITLE: 'Hello',
+        FOO: 'This is a paragraph.',
+        BUTTON_LANG_EN: 'english',
+        BUTTON_LANG_DE: 'german'
+    });
+    $translateProvider.translations('pl_PL', {
+        TITLE: 'Cześć',
+        FOO: 'to jest paragraf',
+        BUTTON_LANG_EN: 'angielski',
+        BUTTON_LANG_DE: 'polski'
+    });
 
     $translateProvider.preferredLanguage('pl_PL');
+
 
     // Public routes
     $stateProvider
@@ -155,7 +166,6 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
     });
 
 }])
-
 
 .run(['$rootScope', '$state', 'Auth', function ($rootScope, $state, Auth) {
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {

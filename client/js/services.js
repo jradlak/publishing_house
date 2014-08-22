@@ -81,17 +81,3 @@ angular.module('publishing_house')
         };
     });
 
-angular.module('publishing_house')
-    .factory('translationLoader', function ($http, $q) {
-        return function (options) {
-            var deferred = $q.defer();
-            $http.get('/translation', options.key)
-                .success(function (data) {
-                    deferred.resolve(data);
-                }).error(function () {
-                    deferred.reject(options.key);
-                });
-
-            return deferred.promise;
-        };
-})

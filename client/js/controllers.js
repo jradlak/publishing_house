@@ -21,8 +21,8 @@ angular.module('publishing_house')
     .controller('MainCtrl',
     ['$rootScope', '$scope', '$translate', function($rootScope, $scope, $translate) {
 
-        $translate.uses('pl_PL');
-        console.log("WSZYTKO OK translate !!!");
+        $translate.use('pl_PL');
+
 
     }]);
 
