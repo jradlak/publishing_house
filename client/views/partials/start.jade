@@ -7,6 +7,5 @@ div(data-ng-repeat="article in articles")
     h3 {{ article.title }}
     p {{ article.user_name }}
     p {{ article.description }}
-    p {{ article.content }}
+    div(ng-bind-html = "article.content")
     hr
-

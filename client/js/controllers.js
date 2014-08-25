@@ -20,7 +20,7 @@ angular.module('publishing_house')
 angular.module('publishing_house')
     .controller('MainCtrl',
     ['$rootScope', '$scope', '$translate', function($rootScope, $scope, $translate) {
-
+        $scope.htmlVariable = "test";
         $scope.changeLanguage = function() {
             if ($translate.use() == 'en_EN') {
                 $translate.use('pl_PL');

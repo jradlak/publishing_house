@@ -111,3 +111,13 @@ node_modules
 /client/components/font-awesome/css/font-awesome.css
 /client/components/jquery/dist/jquery.js
 /client/components/jquery/dist/jquery.min.map
+/client/components/textAngular/.bower.json
+/client/components/textAngular/CONTRIBUTING.md
+/client/components/textAngular/README.md
+/client/components/textAngular/bower.json
+/client/components/textAngular/changelog.md
+/client/components/textAngular/karma-jqlite.conf.js
+/client/components/textAngular/karma-jquery.conf.js
+/client/components/textAngular/src/textAngular-sanitize.js
+/client/components/textAngular/src/textAngular.js
+/client/components/textAngular/src/textAngularSetup.js

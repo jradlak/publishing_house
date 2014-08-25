@@ -44,6 +44,7 @@ html(lang='pl-PL', data-ng-app='publishing_house')
 
             .container(data-ui-view)
 
+
         #alertBox.alert.alert-danger(data-ng-show="error")
             button(type="button", class="close", data-ng-click="error = null;") &times;
             strong Oh no!&nbsp;
@@ -53,6 +54,8 @@ html(lang='pl-PL', data-ng-app='publishing_house')
         script(src='/components/angular-cookies/angular-cookies.min.js')
         script(src='/components/angular-ui-router/release/angular-ui-router.min.js')
         script(src='/components/angular-translate/angular-translate.js')
+        script(src='/components/textAngular/dist/textAngular-sanitize.min.js')
+        script(src='/components/textAngular/dist/textAngular.min.js')
         script(src='/js/routingConfig.js')
         script(src='/js/app.js')
         script(src='/js/services.js')
