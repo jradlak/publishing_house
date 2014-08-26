@@ -11,7 +11,7 @@ describe('Auth controller Unit Tests - ', function() {
         , sandbox = sinon.sandbox.create();
 
     beforeEach(function() {
-
+        console.log('!!!!!!Auth controller Unit Tests');
     });
 
     afterEach(function() {
