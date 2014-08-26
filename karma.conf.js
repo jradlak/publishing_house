@@ -7,6 +7,9 @@ module.exports = function(config){
             'components/angular-cookies/angular-cookies.js',
             'components/angular-mocks/angular-mocks.js',
             'components/angular-ui-router/release/angular-ui-router.js',
+            'components/angular-translate/angular-translate.js',
+            'components/textAngular/dist/textAngular-sanitize.min.js',
+            'components/textAngular/dist/textAngular.min.js',
             'js/**/*.js',
             'tests/unit/**/*.js'
         ],
@@ -35,6 +38,5 @@ module.exports = function(config){
             outputFile: 'test_out/unit.xml',
             suite: 'unit'
         }
-
     })
 };

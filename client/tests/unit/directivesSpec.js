@@ -7,7 +7,7 @@ describe('directives', function() {
     var scope, elem, $httpBackend, Auth;
 
     beforeEach(
-        module('angular-client-side-auth')
+        module('publishing_house')
     );
 
     beforeEach(inject(function($injector) {

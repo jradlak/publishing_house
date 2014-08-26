@@ -8,7 +8,7 @@ describe('services', function() {
  
   // you need to indicate your module in a test
   beforeEach(function() {
-    module('angular-client-side-auth');
+    module('publishing_house');
   });
  
   beforeEach(inject(function($injector) {
