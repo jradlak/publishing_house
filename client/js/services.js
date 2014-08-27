@@ -67,11 +67,13 @@ angular.module('publishing_house')
     .factory('Articles', function($http) {
         return {
             loadAll : function(success, error) {
-                console.log("Ładowanie artykułów!!!! - serwis");
                 $http.get('/articlesLoad').success(success).error(error);
             },
             getAll: function(success, error) {
                 $http.get('/articles').success(success).error(error);
+            },
+            getByUserName: function(userName, success, error) {
+                $http.get('/articlesByUserName', userName).success(success).error(error);
             },
             addArticle: function(article, success, error) {
                 $http.post('/article', article).success(function() {

@@ -26,6 +26,24 @@ module.exports = {
         });
     },
 
+    loadByUserName : function(db, username) {
+        articles = [];
+        var collection = db.get('articlecollection');
+        collection.find({user_name: username},{},function(e,docs) {
+            for (var a in docs)
+            {
+                var art = {
+                    id :  docs[a].id,
+                    user_name : docs[a].user_name,
+                    title : docs[a].title,
+                    description : docs[a].description,
+                    content : docs[a].content
+                };
+                articles.push(art);
+            }
+        });
+    },
+
     getAllArticles : function() {
         return _.map(articles, function(article) { return _.clone(article); });
     },

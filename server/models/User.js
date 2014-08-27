@@ -50,7 +50,6 @@ module.exports = {
         callback(null, user);
     },
 
-
     findAll: function() {
         return _.map(users, function(user) { return _.clone(user); });
     },

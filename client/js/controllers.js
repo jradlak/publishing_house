@@ -73,6 +73,21 @@ angular.module('publishing_house')
             Articles.loadAll();
         }
 
+        $scope.findAllArticlesOfLoggedInUser = function() {
+            console.log("!!! findAllArticlesOfLoggedInUser");
+            Articles.getByUserName($scope.user.user_name, function(res) {
+                $scope.articles = res;
+                console.log($scope.articles);
+            });
+        }
+
+        $scope.findAllArticlesByUserName = function(username) {
+            Articles.getByUserName(username, function(res) {
+                $scope.articles = res;
+                console.log($scope.articles);
+            });
+        }
+
         $scope.loadAllArticles();
         $scope.findAllArticles();
     }]);

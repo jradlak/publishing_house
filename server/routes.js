@@ -60,6 +60,11 @@ var routes = [
         middleware: [ArticleCtrl.loadAll]
     },
     {
+        path : '/articlesByUserName',
+        httpMethod: 'GET',
+        middleware: [ArticleCtrl.loadByUserNmae]
+    },
+    {
         path : '/articles',
         httpMethod: 'GET',
         middleware: [ArticleCtrl.findAll]

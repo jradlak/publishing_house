@@ -22,7 +22,7 @@ module.exports = function(config){
 
         autoWatch : true,
 
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['mocha', 'chai', 'jasmine'],
 
         browsers : ['Chrome'],
 
@@ -31,7 +31,8 @@ module.exports = function(config){
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-mocha',
-            'karma-chai'
+            'karma-chai',
+            'karma-jasmine'
         ],
 
         junitReporter : {

@@ -1,3 +1,11 @@
+// list of articles of selected (or logged in) used
 h1 Artilce list
 div(data-ng-controller='ArticleCtrl')
     p List of articles
+    
+
+    div(data-ng-repeat="article in articles")
+        h3 {{ article.title }}
+        p {{ article.description }}
+        div(ng-bind-html = "article.content")
+        hr

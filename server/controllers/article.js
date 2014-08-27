@@ -13,6 +13,12 @@ module.exports = {
         Article.loadArticles(req.db);
     },
 
+    loadByUserNmae : function(req, res) {
+        console.log(req.body);
+        Article.loadByUserName(req.db, req.body.username);
+        res.json(Article.getAllArticles());
+    },
+
     findAll : function(req, res) {
 
         var articles = Article.getAllArticles();
