@@ -62,7 +62,7 @@ var routes = [
     {
         path : '/articlesByUserName',
         httpMethod: 'GET',
-        middleware: [ArticleCtrl.loadByUserNmae]
+        middleware: [ArticleCtrl.loadByUserName]
     },
     {
         path : '/articles',

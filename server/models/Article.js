@@ -28,8 +28,12 @@ module.exports = {
 
     loadByUserName : function(db, username) {
         articles = [];
+        console.log('!!!Log by username');
+        console.log(username);
         var collection = db.get('articlecollection');
         collection.find({user_name: username},{},function(e,docs) {
+            console.log('docs!!!!');
+            console.log(docs);
             for (var a in docs)
             {
                 var art = {

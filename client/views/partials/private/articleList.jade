@@ -1,9 +1,8 @@
 // list of articles of selected (or logged in) used
 h1 Artilce list
-div(data-ng-controller='ArticleCtrl')
+div(data-ng-controller='ArticleCtrl' ng-init='findAllArticlesOfLoggedInUser()')
+    //a(ng-click = 'findAllArticlesOfLoggedInUser()') Załaduj listę artykułów
     p List of articles
-    
-
     div(data-ng-repeat="article in articles")
         h3 {{ article.title }}
         p {{ article.description }}

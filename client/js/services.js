@@ -73,7 +73,7 @@ angular.module('publishing_house')
                 $http.get('/articles').success(success).error(error);
             },
             getByUserName: function(userName, success, error) {
-                $http.get('/articlesByUserName', userName).success(success).error(error);
+                $http.get('/articlesByUserName', {params: {username: userName }}).success(success).error(error);
             },
             addArticle: function(article, success, error) {
                 $http.post('/article', article).success(function() {

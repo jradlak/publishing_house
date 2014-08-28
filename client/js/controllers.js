@@ -75,7 +75,8 @@ angular.module('publishing_house')
 
         $scope.findAllArticlesOfLoggedInUser = function() {
             console.log("!!! findAllArticlesOfLoggedInUser");
-            Articles.getByUserName($scope.user.user_name, function(res) {
+            console.log($scope.user.username);
+            Articles.getByUserName($scope.user.username, function(res) {
                 $scope.articles = res;
                 console.log($scope.articles);
             });
@@ -88,8 +89,10 @@ angular.module('publishing_house')
             });
         }
 
-        $scope.loadAllArticles();
-        $scope.findAllArticles();
+        $scope.startAllArticles = function() {
+            $scope.loadAllArticles();
+            $scope.findAllArticles();
+        }
     }]);
 
 
