@@ -63,34 +63,25 @@ angular.module('publishing_house')
         }
 
         $scope.findAllArticles = function() {
-            Articles.getAll(function(res){
+            Articles.loadAll(function(res){
                 $scope.articles = res;
-                console.log($scope.articles);
             });
         }
 
-        $scope.loadAllArticles = function() {
-            Articles.loadAll();
-        }
-
         $scope.findAllArticlesOfLoggedInUser = function() {
-            console.log("!!! findAllArticlesOfLoggedInUser");
-            console.log($scope.user.username);
             Articles.getByUserName($scope.user.username, function(res) {
                 $scope.articles = res;
-                console.log($scope.articles);
             });
         }
 
         $scope.findAllArticlesByUserName = function(username) {
             Articles.getByUserName(username, function(res) {
                 $scope.articles = res;
-                console.log($scope.articles);
             });
         }
 
         $scope.startAllArticles = function() {
-            $scope.loadAllArticles();
+            console.log('!!! start all articles');
             $scope.findAllArticles();
         }
     }]);

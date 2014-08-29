@@ -7,13 +7,14 @@ var Article
 var articles = [];
 
 module.exports = {
-    loadArticles : function(db) {
+    loadArticles : function(db, success) {
         articles = [];
+        console.log('!!! loadArticles server');
         var collection = db.get('articlecollection');
         collection.find({},{},function(e,docs) {
-
             for (var a in docs)
             {
+                console.log(a);
                 var art = {
                     id :  docs[a].id,
                     user_name : docs[a].user_name,
@@ -23,17 +24,14 @@ module.exports = {
                 };
                 articles.push(art);
             }
+            success();
         });
     },
 
-    loadByUserName : function(db, username) {
+    loadByUserName : function(db, username, success) {
         articles = [];
-        console.log('!!!Log by username');
-        console.log(username);
         var collection = db.get('articlecollection');
         collection.find({user_name: username},{},function(e,docs) {
-            console.log('docs!!!!');
-            console.log(docs);
             for (var a in docs)
             {
                 var art = {
@@ -45,6 +43,7 @@ module.exports = {
                 };
                 articles.push(art);
             }
+            success();
         });
     },
 

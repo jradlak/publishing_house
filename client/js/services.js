@@ -69,9 +69,6 @@ angular.module('publishing_house')
             loadAll : function(success, error) {
                 $http.get('/articlesLoad').success(success).error(error);
             },
-            getAll: function(success, error) {
-                $http.get('/articles').success(success).error(error);
-            },
             getByUserName: function(userName, success, error) {
                 $http.get('/articlesByUserName', {params: {username: userName }}).success(success).error(error);
             },
