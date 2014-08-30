@@ -59,8 +59,6 @@ module.exports = {
     },
 
     findByUsername: function(username) {
-        console.log("Znajdowanie po userName!!!");
-        console.log(username);
         return _.clone(_.find(users, function(user) { return user.username === username; }));
     },
 

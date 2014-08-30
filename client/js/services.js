@@ -55,12 +55,15 @@ angular.module('publishing_house')
 });
 
 angular.module('publishing_house')
-.factory('Users', function($http) {
-    return {
-        getAll: function(success, error) {
-            $http.get('/users').success(success).error(error);
-        }
-    };
+    .factory('Users', function($http) {
+        return {
+            getAll: function(success, error) {
+                $http.get('/users').success(success).error(error);
+            },
+            getUserByName: function(userName, success, error) {
+                $http.get('/user', {params: {username: userName }}).success(success).error(error);
+            }
+        };
 });
 
 angular.module('publishing_house')
@@ -80,3 +83,20 @@ angular.module('publishing_house')
         };
     });
 
+angular.module('publishing_house')
+    .factory('CurrentUserInfo', function($http) {
+        var currentUser = {};
+        var currentArticles = [];
+        return {
+           getUserAndArticles : function(userName, success, error) {
+                $http.get('/user', {params: {username: userName }}).success(function(res) {
+                    currentUser = res;
+                    $http.get('/articlesByUserName', {params: {username: userName }}).success(function(res_articles) {
+                        currentArticles = res_articles;
+                        success(currentUser, currentArticles);
+                    }).error(error);
+                }).error(error);
+           },
+           userName : {}
+       };
+    });

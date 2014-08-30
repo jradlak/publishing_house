@@ -3,3 +3,15 @@ div(data-ng-controller='UserCtrl')
     p Here you can edit details about your account -
     p Username: {{user.username}}
     p Role: {{user.role.title}}
+
+hr
+hr
+
+div(data-ng-controller='ArticleCtrl' ng-init='findAllArticlesOfLoggedInUser()')
+    //a(ng-click = 'findAllArticlesOfLoggedInUser()') Załaduj listę artykułów
+    p List of articles
+    div(data-ng-repeat="article in articles")
+        h3 {{ article.title }}
+        p {{ article.description }}
+        div(ng-bind-html = "article.content")
+        hr

@@ -52,6 +52,11 @@ var routes = [
         middleware: [UserCtrl.index],
         accessLevel: accessLevels.admin
     },
+    {
+        path: '/user',
+        httpMethod: 'GET',
+        middleware: [UserCtrl.loadByUserName]
+    },
 
     // Articles
     {

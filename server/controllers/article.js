@@ -21,7 +21,6 @@ module.exports = {
     },
 
     loadByUserName : function(req, res) {
-        console.log('!!!!!!!!!!!!!!!! loadByUserName !!!')
         var objUserName = url.parse(req.url,true).query;
         Article.loadByUserName(req.db, objUserName.username, function() {
             var articles = Article.getAllArticles();

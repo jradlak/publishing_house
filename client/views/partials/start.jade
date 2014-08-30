@@ -5,7 +5,7 @@ h1 {{ 'ARTICLE_LIST' | translate }}
 div(data-ng-controller='ArticleCtrl' ng-init='startAllArticles()')
     div(data-ng-repeat="article in articles")
         h3 {{ article.title }}
-        p {{ article.user_name }}
+        a(ng-click='showUser(article.user_name)') {{ article.user_name }}
         p {{ article.description }}
         div(ng-bind-html = "article.content")
         hr

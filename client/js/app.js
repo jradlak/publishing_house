@@ -89,8 +89,12 @@ angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.tran
         })
         .state('user.start', {
             url: '/',
-            templateUrl: 'start',
-            controller: 'ArticleCtrl'
+            templateUrl: 'start'
+        })
+        .state('user.userShowPanel', {
+            url: '/userShowPanel',
+            templateUrl: 'userShowPanel',
+            controller: 'UserDetailsCtrl'
         })
         .state('user.home', {
             url: '/home/',

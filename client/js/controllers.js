@@ -44,12 +44,26 @@ angular.module('publishing_house')
     }]);
 
 angular.module('publishing_house')
+    .controller('UserDetailsCtrl',
+    ['$rootScope', '$scope', 'CurrentUserInfo', function($rootScope, $scope, CurrentUserInfo) {
+        $scope.selected_user = {};
+        $scope.articles_current = [];
+        $scope.initial = function() {
+            CurrentUserInfo.getUserAndArticles(CurrentUserInfo.userName, function(currentUser, currentArticles) {
+                $scope.selected_user = currentUser;
+                $scope.articles_current = currentArticles;
+            });
+        }
+    }]);
+
+angular.module('publishing_house')
     .controller('ArticleCtrl',
-    ['$rootScope', '$scope', 'Users', 'Auth', 'Articles', function($rootScope, $scope, Users, Auth, Articles) {
-        $scope.rememberme = true;
+    ['$rootScope', '$scope', '$location', 'Users', 'Auth', 'Articles', 'CurrentUserInfo',
+        function($rootScope, $scope, $location, Users, Auth, Articles, CurrentUserInfo) {
         $scope.user = Auth.user;
         $scope.article = {};
         $scope.articles = [];
+
         $scope.addArticle = function() {
             $scope.article.user_name = $scope.user.username;
             Articles.addArticle(
@@ -81,8 +95,12 @@ angular.module('publishing_house')
         }
 
         $scope.startAllArticles = function() {
-            console.log('!!! start all articles');
             $scope.findAllArticles();
+        }
+
+        $scope.showUser = function(username) {
+            CurrentUserInfo.userName = username;
+            $location.path('/userShowPanel');
         }
     }]);
 
@@ -144,5 +162,4 @@ angular.module('publishing_house')
         $rootScope.error = "Failed to fetch users.";
         $scope.loading = false;
     });
-}]);
-
+}])

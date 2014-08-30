@@ -1,0 +1,13 @@
+h1 User details
+div(data-ng-controller='UserDetailsCtrl' ng-init='initial()')
+    p Username: {{selected_user.username}}
+    p Role: {{selected_user.role.title}}
+    hr
+    hr
+
+    p List of articles
+    div(data-ng-repeat="article in articles_current")
+        h3 {{ article.title }}
+        p {{ article.description }}
+        div(ng-bind-html = "article.content")
+        hr
