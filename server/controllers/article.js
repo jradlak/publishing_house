@@ -7,7 +7,12 @@ var _ =           require('underscore')
 
 module.exports = {
     addArticle: function(req) {
-        Article.addArticle(req.db, req.body.user_name, req.body.title, req.body.description, req.body.content)
+        Article.addArticle(
+            req.db,
+            req.body.user_name,
+            req.body.title,
+            req.body.description,
+            req.body.content)
     },
 
     loadAll : function(req, res) {

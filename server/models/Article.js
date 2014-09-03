@@ -2,7 +2,8 @@
  * Created by Jakub on 2014-08-12.
  */
 var Article
-    , _ =               require('underscore');
+    , _ =               require('underscore')
+    , fs =              require('fs');
 
 var articles = [];
 
@@ -51,7 +52,7 @@ module.exports = {
         return _.map(articles, function(article) { return _.clone(article); });
     },
 
-    addArticle : function(db, user_name, title, description, content, callback) {
+    addArticle : function(db, user_name, title, description, content) {
         var maxId = 1;
         if (articles.length > 0) {
             maxId = _.max(articles, function(article) { return article.id; }).id + 1;

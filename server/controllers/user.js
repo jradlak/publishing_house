@@ -17,5 +17,9 @@ module.exports = {
         var objUserName = url.parse(req.url,true).query;
         var user = User.findByUsername(objUserName.username);
         res.json(user);
+    },
+
+    updateUser : function (req) {
+       User.updateUser(req.db, req.body.username, req.body.role, req.body.description, req.files.avatar, callback)
     }
 };

@@ -62,6 +62,11 @@ angular.module('publishing_house')
             },
             getUserByName: function(userName, success, error) {
                 $http.get('/user', {params: {username: userName }}).success(success).error(error);
+            },
+            updateUser : function(userData, success, error) {
+                $http.post('/user_update', userData).success(function() {
+                    success();
+                }).error(error);
             }
         };
 });

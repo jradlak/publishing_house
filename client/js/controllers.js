@@ -36,10 +36,20 @@ angular.module('publishing_house')
     ['$rootScope', '$scope', 'Users', 'Auth', function($rootScope, $scope, Users, Auth) {
         $scope.rememberme = true;
         $scope.user = Auth.user;
+        //$scope.user.avatar = {};
 
+        /*
         $scope.saveUserData = function() {
             console.log("sejwowanie juzera ;)");
+            conso   le.log($scope.user);
+        }*/
+
+        $scope.updateUser = function() {
+            console.log('$scope.user');
             console.log($scope.user);
+            Users.updateUser($scope.user, function() {
+                console.log('update user - success!!!');
+            })
         }
     }]);
 

@@ -3,7 +3,8 @@ var User
     , passport =        require('passport')
     , LocalStrategy =   require('passport-local').Strategy
     , check =           require('validator').check
-    , userRoles =       require('../../client/js/routingConfig').userRoles;
+    , userRoles =       require('../../client/js/routingConfig').userRoles
+    , fs =              require('fs');
 
 var users = [];
 
@@ -21,6 +22,9 @@ module.exports = {
                     id :  docs[u].id, //_.max(users, function(user) { return user.id; }).id + 1,
                     username : docs[u].username,
                     password : docs[u].password,
+                    description : docs[u].description,
+                    avatar_path : docs[u].avatar_path,
+                    creation_date : docs[u].creation_date,
                     role : {
                         bitMask : docs[u].role.bitMask,
                         title : docs[u].role.title
@@ -39,6 +43,8 @@ module.exports = {
             id:         _.max(users, function(user) { return user.id; }).id + 1,
             username:   username,
             password:   password,
+            description : {},
+            creation_date : new Date(),
             role:       role
         };
         users.push(user);
@@ -48,6 +54,21 @@ module.exports = {
         collection.insert(user);
 
         callback(null, user);
+    },
+
+    updateUser : function(db, username, role, description, avatar, callback) {
+        var user = this.findByUsername(username);
+        if(user == undefined) {
+            return callback("UserDontExists");
+        }
+
+        var imageData =  fs.readFileSync(avatar.path);
+        user.avatar = new MongoDb.Binary(imageData);
+        user.avatarType = avatar.type;
+        user.role = role;
+        user.description = description;
+        var collection = db.get('usercollection');
+        collection.save(user, {safe: true}, callback);
     },
 
     findAll: function() {

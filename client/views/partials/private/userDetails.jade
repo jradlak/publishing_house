@@ -1,9 +1,21 @@
 h1 My account details
 div(data-ng-controller='UserCtrl')
     p Here you can edit details about your account -
-    p Username: {{user.username}}
-    p Role: {{user.role.title}}
+    //p Username: {{user.username}}
+    //p Role: {{user.role.title}}
 
+    form.form-horizontal(ng-submit="updateUser()", name="addArticleForm", role="form")
+        .form-group
+            label.control-label.col-sm-2(for="user") Avatar
+            .col-sm-10
+                input.form-control(type="file", data-ng-model="user.avatar", placeholder="Avatar", name="avatar", required)
+        .form-group
+            label.control-label.col-sm-2(for="user") Description
+            .col-sm-10
+                input.form-control(type="textarea", data-ng-model="user.description", placeholder="Description", name="description", rows="3", required, data-ng-minlength="1", autofocus)
+        .form-group
+            .controls
+                button.btn(type="submit", data-ng-disabled="registerForm.$invalid") Update user
 hr
 hr
 

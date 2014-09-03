@@ -57,6 +57,11 @@ var routes = [
         httpMethod: 'GET',
         middleware: [UserCtrl.loadByUserName]
     },
+    {
+        path: '/user_update',
+        httpMethod: 'POST',
+        middleware: [UserCtrl.updateUser]
+    },
 
     // Articles
     {
