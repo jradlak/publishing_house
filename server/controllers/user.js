@@ -21,5 +21,18 @@ module.exports = {
 
     updateUser : function (req) {
        User.updateUser(req.db, req.body.username, req.body.role, req.body.description, req.files.avatar, callback)
+    },
+
+    uploadAvatar : function (req) {
+        console.log('!!! WE ARE IN uploadAvatar');
+        // show the uploaded file name
+        var fstream;
+        req.pipe(req.busboy);
+        req.busboy.on('file', function (fieldname, file, filename) {
+            console.log("Uploading: " + filename);
+        });
+        
+        //console.log("file name", req.files.file.name);
+        //console.log("file path", req.files.file.path);
     }
 };
