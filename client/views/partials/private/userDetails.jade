@@ -4,23 +4,27 @@ div(data-ng-controller='UserCtrl')
     //p Username: {{user.username}}
     //p Role: {{user.role.title}}
 
-    form.form-horizontal(ng-submit="updateUser()", name="addArticleForm", role="form")
+    //form(method="POST", action="/user_uploads", enctype="multipart/form-data")
+    //    input(type="file", name="file")
+    //    button.btn(type="submit") Save image
+
+    form.form-horizontal(action="/user_update", ng-upload="updateUser(contents)", role="form")
         .form-group
             label.control-label.col-sm-2(for="user") Avatar
             .col-sm-10
-                input.form-control(type="file", data-ng-model="user.avatar", placeholder="Avatar", name="avatar", required)
+                input.form-control(type="file", name ="avatar" required)
         .form-group
             label.control-label.col-sm-2(for="user") Description
             .col-sm-10
                 input.form-control(type="textarea", data-ng-model="user.description", placeholder="Description", name="description", rows="3", required, data-ng-minlength="1", autofocus)
         .form-group
+            label.control-label.col-sm-2(for="user") Username
+            .col-sm-10
+                input.form-control(type="text", ng-model="username", placeholder="Username", name="username", required, data-ng-minlength="1", autofocus)
+        .form-group
             .controls
-                button.btn(type="submit", data-ng-disabled="registerForm.$invalid") Update user
+                button.btn(type="submit", value="Upload", data-ng-disabled="registerForm.$invalid") Update user
     hr
-
-    form(method="POST", action="/user_uploads", enctype="multipart/form-data")
-        input(type="file", name="file")
-        button.btn(type="submit") Save image
 
 
 div(data-ng-controller='ArticleCtrl' ng-init='findAllArticlesOfLoggedInUser()')

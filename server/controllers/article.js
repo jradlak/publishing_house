@@ -16,7 +16,6 @@ module.exports = {
     },
 
     loadAll : function(req, res) {
-        console.log('Napewno ladowanie wszystkiego !!!')
         Article.loadArticles(req.db, function() {
             var articles = Article.getAllArticles();
             console.log('zaladowano liste artykulow');

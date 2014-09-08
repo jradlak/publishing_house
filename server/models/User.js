@@ -62,9 +62,6 @@ module.exports = {
             return callback("UserDontExists");
         }
 
-        var imageData =  fs.readFileSync(avatar.path);
-        user.avatar = new MongoDb.Binary(imageData);
-        user.avatarType = avatar.type;
         user.role = role;
         user.description = description;
         var collection = db.get('usercollection');

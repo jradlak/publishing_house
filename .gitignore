@@ -150,3 +150,16 @@ node_modules
 /client/components/es5-shim/es5-shim.min.js
 /client/components/es5-shim/package.json
 /client/components/es5-shim/shims.json
+
+/client/components/ngUpload/.bower.json
+/client/components/ngUpload/CHANGELOG.md
+/client/components/ngUpload/bower.json
+/client/components/ngUpload/ng-upload.js
+/client/components/ngUpload/ng-upload.min.js
+/client/components/ngUpload/ng-upload.min.js.map
+/client/components/ngUpload/readme.md
+/server/controllers/uploads/2014_8_1_14_34_1_660face.jpg
+/server/controllers/uploads/2014_8_1_14_34_36_411face.jpg
+/server/controllers/uploads/2014_8_1_14_35_5_729face.jpg
+/server/controllers/uploads/2014_8_1_14_36_10_780face.jpg
+/server/controllers/uploads/2014_8_1_14_36_18_866face.jpg

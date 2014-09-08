@@ -20,24 +20,31 @@ module.exports = {
         res.json(user);
     },
 
-    updateUser : function (req) {
-       User.updateUser(req.db, req.body.username, req.body.role, req.body.description, req.files.avatar, callback)
-    },
-
-    uploadAvatar : function (req, res) {
-        console.log('!!! WE ARE IN uploadAvatar');
-        // show the uploaded file name
+    updateUser : function (req, res) {
         var fstream;
         req.pipe(req.busboy);
         req.busboy.on('file', function (fieldname, file, filename) {
             console.log("Uploading: " + filename);
-            fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
+            var date  = new Date();
+            var dateString = date.getYear() + 1900 + "_" + date.getMonth() + "_" + date.getDay() + "_" + date.getHours() + "_" + date.getMinutes() +
+                "_" + date.getSeconds() + "_" + date.getMilliseconds();
+            fstream = fs.createWriteStream(__dirname + '/uploads/' + dateString + filename);
             file.pipe(fstream);
             fstream.on('close', function () {
-                console.log('FILE SAVED!!!!');
-                res.redirect('back');
+                //User.updateUser(req.db, req.body.username, req.body.role, req.body.description, callback)
+                //res.redirect('back');
             });
         });
+        req.busboy.on('field', function(fieldname, val) {
+            console.log(fieldname, val);
+        });
+        req.busboy.on('finish', function(){
+            //next();
+        });
+    },
+
+    uploadAvatar : function (req, res) {
+
 
         //console.log("file name", req.files.file.name);
         //console.log("file path", req.files.file.path);

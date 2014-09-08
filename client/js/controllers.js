@@ -36,14 +36,31 @@ angular.module('publishing_house')
     ['$rootScope', '$scope', 'Users', 'Auth', function($rootScope, $scope, Users, Auth) {
         $scope.rememberme = true;
         $scope.user = Auth.user;
+        $scope.username =  Auth.user.username;
 
-        $scope.updateUser = function() {
+        $scope.updateUser = function(content) {
             console.log('$scope.user');
             console.log($scope.user);
-            Users.updateUser($scope.user, function() {
-                console.log('update user - success!!!');
-            })
+            console.log(content);
+            //Users.updateUser($scope.user, function() {
+            //    console.log('update user - success!!!');
+            //})
         }
+
+        $scope.setFiles = function(element) {
+            console.log(element);
+            /*
+            $scope.$apply(function(scope) {
+                console.log('files:', element.files);
+                // Turn the FileList object into an Array
+                scope.files = []
+                for (var i = 0; i < element.files.length; i++) {
+                    scope.files.push(element.files[i])
+                }
+                scope.progressVisible = false
+            });
+            */
+        };
 
 
     }]);
