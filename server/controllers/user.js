@@ -22,24 +22,39 @@ module.exports = {
 
     updateUser : function (req, res) {
         var fstream;
+        var username = '';
+        var description = '';
         req.pipe(req.busboy);
         req.busboy.on('file', function (fieldname, file, filename) {
             console.log("Uploading: " + filename);
             var date  = new Date();
             var dateString = date.getYear() + 1900 + "_" + date.getMonth() + "_" + date.getDay() + "_" + date.getHours() + "_" + date.getMinutes() +
                 "_" + date.getSeconds() + "_" + date.getMilliseconds();
-            fstream = fs.createWriteStream(__dirname + '/uploads/' + dateString + filename);
+            var filepath = __dirname + '/uploads/' + dateString + filename;
+            fstream = fs.createWriteStream(filepath);
             file.pipe(fstream);
             fstream.on('close', function () {
-                //User.updateUser(req.db, req.body.username, req.body.role, req.body.description, callback)
+                console.log(username);
+                console.log(description);
+                console.log('Zamkniecie strumienia pliku !!!');
+                User.updateUser(req.db, username, description, filepath, function() {
+                    console.log("smtng goes wrong!!!");
+                });
                 //res.redirect('back');
             });
         });
         req.busboy.on('field', function(fieldname, val) {
-            console.log(fieldname, val);
+            if (fieldname == 'username') {
+                username = val;
+            }
+
+            if (fieldname == 'description') {
+                description = val;
+            }
         });
         req.busboy.on('finish', function(){
-            //next();
+            //console.log(username);
+            //console.log(description);
         });
     },
 
