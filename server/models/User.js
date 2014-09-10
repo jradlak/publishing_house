@@ -64,8 +64,12 @@ module.exports = {
         var collection = db.get('usercollection');
         collection.findAndModify({ query: {username : username},
             update: {
+                id : user.id,
+                username : username,
+                password : user.password,
                 description : description,
-                avatarLink : avatarLink
+                avatarLink : avatarLink,
+                role : user.role
             }});
     },
 
