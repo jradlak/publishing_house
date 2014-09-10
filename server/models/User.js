@@ -59,21 +59,14 @@ module.exports = {
     updateUser : function(db, username, description, avatarLink, callback) {
         var user = this.findByUsername(username);
         if(user == undefined) {
-            return callback("UserDontExists");
+            return callback("UserDontExist");
         }
-
-        user.description = description;
-        user.avatarLink = avatarLink;
         var collection = db.get('usercollection');
-        //console.log(collection);
-        collection.find({},{},function(e,docs) {
-                for (var u in docs)
-                {
-                    console.log(docs[u].username);
-                }
-        });
-        //TODO: make this line below work!!!
-        //collection.update(user, {safe: true}, callback);
+        collection.findAndModify({ query: {username : username},
+            update: {
+                description : description,
+                avatarLink : avatarLink
+            }});
     },
 
     findAll: function() {

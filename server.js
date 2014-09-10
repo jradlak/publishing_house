@@ -12,7 +12,6 @@ var express =           require('express')
     , session =         require('express-session')
     , csrf =            require('csurf')
     , User =            require('./server/models/User.js')
-    , mongo =           require('mongodb')
     , monk =            require('monk')
     , db =              monk('localhost:27017/publishing_house')
     , busboy =          require('connect-busboy');
