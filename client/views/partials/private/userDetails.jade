@@ -1,6 +1,7 @@
 h1 My account details
 div(data-ng-controller='UserCtrl' ng-init='initial()')
     p Here you can edit details about your account
+    img(ng-src="data:image/JPEG;base64,{{avatarImage}}")
 
     form.form-horizontal(action="/user_update", ng-upload="updateUser(contents)", role="form")
         .form-group

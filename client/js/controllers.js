@@ -33,10 +33,11 @@ angular.module('publishing_house')
 
 angular.module('publishing_house')
     .controller('UserCtrl',
-    ['$rootScope', '$scope', 'Users', 'Auth', function($rootScope, $scope, Users, Auth) {
+    ['$rootScope', '$scope', 'Users', 'Auth', 'base64', function($rootScope, $scope, Users, Auth, base64) {
         $scope.rememberme = true;
         $scope.user = Auth.user;
         $scope.username =  Auth.user.username;
+        $scope.avatarImage = {};
 
         $scope.updateUser = function(content) {
             //TODO: think if it is needed
@@ -45,7 +46,8 @@ angular.module('publishing_house')
 
         $scope.getUserAvatar = function() {
             Users.getUserAvatar($scope.username, function(res) {
-                console.log("It seems that everything is OK!!");
+                $scope.avatarImage = base64.encode(res);
+                console.log($scope.avatarImage);
             })
         }
 

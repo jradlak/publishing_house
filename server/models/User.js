@@ -85,9 +85,7 @@ module.exports = {
     getUserAvatar : function(db, username, res) {
         var collection = db.get('usercollection');
         collection.findOne({username: username}, function (error, result) {
-            //TODO: fix line below
-            //res.contentType(result.avatar.imageType);
-            res.writeHead(200, {'Content-Type': 'image/jpeg' });
+            res.contentType('image/jpeg');
             res.end(result.avatar.buffer, "binary");
         });
     },

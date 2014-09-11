@@ -163,3 +163,13 @@ node_modules
 /server/controllers/uploads/2014_8_1_14_35_5_729face.jpg
 /server/controllers/uploads/2014_8_1_14_36_10_780face.jpg
 /server/controllers/uploads/2014_8_1_14_36_18_866face.jpg
+
+/client/components/angular-utf8-base64/.bower.json
+/client/components/angular-utf8-base64/LICENSE
+/client/components/angular-utf8-base64/README.md
+/client/components/angular-utf8-base64/angular-utf8-base64.js
+/client/components/angular-utf8-base64/angular-utf8-base64.min.js
+/client/components/angular-utf8-base64/bower.json
+/client/components/angular-utf8-base64/gruntfile.js
+/client/components/jquery/dist/jquery.min.js
+/server/controllers/uploads/2014_8_4_17_39_1_67face.jpg

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.translate', 'textAngular', 'ngSanitize', 'ngUpload'])
+angular.module('publishing_house', ['ngCookies', 'ui.router', 'pascalprecht.translate', 'textAngular', 'ngSanitize', 'ngUpload', 'ab-base64'])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$translateProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $translateProvider) {
