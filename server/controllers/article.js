@@ -18,8 +18,6 @@ module.exports = {
     loadAll : function(req, res) {
         Article.loadArticles(req.db, function() {
             var articles = Article.getAllArticles();
-            console.log('zaladowano liste artykulow');
-            console.log(articles);
             res.json(articles);
         });
     },

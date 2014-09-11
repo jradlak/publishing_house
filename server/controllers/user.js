@@ -31,10 +31,15 @@ module.exports = {
                 "_" + date.getSeconds() + "_" + date.getMilliseconds();
             var filepath = __dirname + '/uploads/' + dateString + filename;
             fstream = fs.createWriteStream(filepath);
+
+            console.log("!!!! FILE!!!");
+            console.log(file);
+
             file.pipe(fstream);
             fstream.on('close', function () {
-               User.updateUser(req.db, username, description, filepath, dateString + filename, file.type, function() {
-                    console.log("smtng goes wrong!!!");
+                User.updateUser(req.db, username, description, filepath, dateString + filename, file.type, function() {
+                    console.log("Everything OK");
+                    res.end();
                 });
             });
         });
@@ -52,10 +57,9 @@ module.exports = {
         });
     },
 
-    uploadAvatar : function (req, res) {
-
-
-        //console.log("file name", req.files.file.name);
-        //console.log("file path", req.files.file.path);
+    getUserAvatar : function(req, res) {
+        var objUserName = url.parse(req.url,true).query;
+        User.getUserAvatar(req.db, objUserName.username, res);
     }
+
 };

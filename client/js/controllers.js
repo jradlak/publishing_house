@@ -39,30 +39,19 @@ angular.module('publishing_house')
         $scope.username =  Auth.user.username;
 
         $scope.updateUser = function(content) {
-            console.log('$scope.user');
-            console.log($scope.user);
+            //TODO: think if it is needed
             console.log(content);
-            //Users.updateUser($scope.user, function() {
-            //    console.log('update user - success!!!');
-            //})
         }
 
-        $scope.setFiles = function(element) {
-            console.log(element);
-            /*
-            $scope.$apply(function(scope) {
-                console.log('files:', element.files);
-                // Turn the FileList object into an Array
-                scope.files = []
-                for (var i = 0; i < element.files.length; i++) {
-                    scope.files.push(element.files[i])
-                }
-                scope.progressVisible = false
-            });
-            */
-        };
+        $scope.getUserAvatar = function() {
+            Users.getUserAvatar($scope.username, function(res) {
+                console.log("It seems that everything is OK!!");
+            })
+        }
 
-
+        $scope.initial = function() {
+            $scope.getUserAvatar();
+        }
     }]);
 
 angular.module('publishing_house')

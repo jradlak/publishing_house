@@ -78,6 +78,18 @@ module.exports = {
                 avatarType : imageType,
                 role : user.role
             }});
+
+        callback();
+    },
+
+    getUserAvatar : function(db, username, res) {
+        var collection = db.get('usercollection');
+        collection.findOne({username: username}, function (error, result) {
+            //TODO: fix line below
+            //res.contentType(result.avatar.imageType);
+            res.writeHead(200, {'Content-Type': 'image/jpeg' });
+            res.end(result.avatar.buffer, "binary");
+        });
     },
 
     findAll: function() {
@@ -106,9 +118,7 @@ module.exports = {
 
     localStrategy: new LocalStrategy(
         function(username, password, done) {
-
             var user = module.exports.findByUsername(username);
-
             if(!user) {
                 done(null, false, { message: 'Incorrect username.' });
             }

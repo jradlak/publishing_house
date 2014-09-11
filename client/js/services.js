@@ -60,13 +60,8 @@ angular.module('publishing_house')
             getAll: function(success, error) {
                 $http.get('/users').success(success).error(error);
             },
-            getUserByName: function(userName, success, error) {
-                $http.get('/user', {params: {username: userName }}).success(success).error(error);
-            },
-            updateUser : function(userData, success, error) {
-                $http.post('/user_update', userData).success(function() {
-                    success();
-                }).error(error);
+            getUserAvatar : function (userName, success, error) {
+                $http.get('/user_avatar',  {params: {username: userName }}).success(success).error(error);
             }
         };
 });

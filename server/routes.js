@@ -62,13 +62,11 @@ var routes = [
         httpMethod: 'POST',
         middleware: [UserCtrl.updateUser]
     },
-    // Uploads
     {
-        path : '/user_uploads',
-        httpMethod: 'POST',
-        middleware: [UserCtrl.uploadAvatar]
+        path: '/user_avatar',
+        httpMethod: 'GET',
+        middleware: [UserCtrl.getUserAvatar]
     },
-
     // Articles
     {
         path : '/articlesLoad',
