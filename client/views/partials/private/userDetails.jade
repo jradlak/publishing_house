@@ -1,12 +1,6 @@
 h1 My account details
 div(data-ng-controller='UserCtrl')
-    p Here you can edit details about your account -
-    //p Username: {{user.username}}
-    //p Role: {{user.role.title}}
-
-    //form(method="POST", action="/user_uploads", enctype="multipart/form-data")
-    //    input(type="file", name="file")
-    //    button.btn(type="submit") Save image
+    p Here you can edit details about your account
 
     form.form-horizontal(action="/user_update", ng-upload="updateUser(contents)", role="form")
         .form-group
@@ -25,7 +19,7 @@ div(data-ng-controller='UserCtrl')
             .controls
                 button.btn(type="submit", value="Upload", data-ng-disabled="registerForm.$invalid") Update user
     hr
-
+    hr
 
 div(data-ng-controller='ArticleCtrl' ng-init='findAllArticlesOfLoggedInUser()')
     //a(ng-click = 'findAllArticlesOfLoggedInUser()') Załaduj listę artykułów

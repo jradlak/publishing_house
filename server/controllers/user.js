@@ -26,7 +26,6 @@ module.exports = {
         var description = '';
         req.pipe(req.busboy);
         req.busboy.on('file', function (fieldname, file, filename) {
-            console.log("Uploading: " + filename);
             var date  = new Date();
             var dateString = date.getYear() + 1900 + "_" + date.getMonth() + "_" + date.getDay() + "_" + date.getHours() + "_" + date.getMinutes() +
                 "_" + date.getSeconds() + "_" + date.getMilliseconds();
@@ -34,13 +33,9 @@ module.exports = {
             fstream = fs.createWriteStream(filepath);
             file.pipe(fstream);
             fstream.on('close', function () {
-                console.log(username);
-                console.log(description);
-                console.log('Zamkniecie strumienia pliku !!!');
-                User.updateUser(req.db, username, description, filepath, function() {
+               User.updateUser(req.db, username, description, filepath, dateString + filename, file.type, function() {
                     console.log("smtng goes wrong!!!");
                 });
-                //res.redirect('back');
             });
         });
         req.busboy.on('field', function(fieldname, val) {
@@ -53,8 +48,7 @@ module.exports = {
             }
         });
         req.busboy.on('finish', function(){
-            //console.log(username);
-            //console.log(description);
+
         });
     },
 

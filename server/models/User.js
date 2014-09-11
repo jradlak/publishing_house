@@ -4,7 +4,9 @@ var User
     , LocalStrategy =   require('passport-local').Strategy
     , check =           require('validator').check
     , userRoles =       require('../../client/js/routingConfig').userRoles
-    , fs =              require('fs');
+    , fs =              require('fs')
+    , MongoDb =         require('MongoDb');
+
 
 var users = [];
 
@@ -56,11 +58,14 @@ module.exports = {
         callback(null, user);
     },
 
-    updateUser : function(db, username, description, avatarLink, callback) {
+    updateUser : function(db, username, description, avatarPath, avatarLink, imageType, callback) {
         var user = this.findByUsername(username);
         if(user == undefined) {
             return callback("UserDontExist");
         }
+
+        var imageData = fs.readFileSync(avatarPath);
+
         var collection = db.get('usercollection');
         collection.findAndModify({ query: {username : username},
             update: {
@@ -69,6 +74,8 @@ module.exports = {
                 password : user.password,
                 description : description,
                 avatarLink : avatarLink,
+                avatar : new MongoDb.Binary(imageData),
+                avatarType : imageType,
                 role : user.role
             }});
     },
